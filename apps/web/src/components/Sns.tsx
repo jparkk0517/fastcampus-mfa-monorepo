@@ -1,3 +1,4 @@
+import { DetailedHTMLProps, HTMLAttributes } from "react";
 import { registCustomElement } from "ui";
 
 registCustomElement({
@@ -12,22 +13,18 @@ declare global {
         url: string;
         "component-name": string;
         "is-legacy": string;
-        basename: string;
-        "time-stamp": number;
       };
     }
   }
 }
 
-export default function Legacy() {
+export default function Sns() {
   return (
     <micro-custom-element
-      time-stamp={new Date().getTime()}
       app-name={"legacy"}
       url={"http://localhost:7003"}
-      component-name={"App"}
+      component-name={"Sns"}
       is-legacy="true"
-      basename="/legacy"
     />
   );
 }

@@ -9,6 +9,10 @@ const items = [
     key: "shoppingList",
     label: <Link to="/shoppingList">shoppingList</Link>,
   },
+  {
+    key: "sns",
+    label: <Link to="/sns">sns</Link>,
+  },
 ];
 
 export default function Header() {
