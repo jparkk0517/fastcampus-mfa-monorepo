@@ -19,14 +19,17 @@ const render = (container: HTMLElement, component: ReactNode) => {
       </ShadowDOM>
     </React.StrictMode>
   );
+  return () => {
+    root.unmount();
+  };
 };
 
 export default {
   App: (container: HTMLElement, props?: Record<string, any>) => {
     const { basename = "" } = props ?? {};
-    render(container, <App basename={basename} />);
+    return render(container, <App basename={basename} />);
   },
   MailList: (container: HTMLElement) => {
-    render(container, <MailList />);
+    return render(container, <MailList />);
   },
 };
