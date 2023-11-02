@@ -1,5 +1,16 @@
 {
   "private": true,
+  "workspaces": {
+    "nohoist": [
+      "**/react",
+      "**/react-dom",
+      "**/react-router-dom"
+    ],
+    "packages": [
+      "apps/*",
+      "packages/*"
+    ]
+  },
   "scripts": {
     "build": "turbo run build",
     "clean": "turbo run clean",
@@ -14,9 +25,5 @@
     "tsconfig": "*",
     "turbo": "latest"
   },
-  "packageManager": "npm@10.1.0",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
+  "packageManager": "npm@10.1.0"
 }
