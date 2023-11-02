@@ -12,6 +12,10 @@ const items = [
     label: <Link to="/shoppingList">shoppingList</Link>,
   },
   {
+    key: "sns",
+    label: <Link to="/sns">sns</Link>,
+  },
+  {
     key: "web",
     label: <Link to="/web">web</Link>,
   },

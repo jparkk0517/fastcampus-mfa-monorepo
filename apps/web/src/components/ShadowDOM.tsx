@@ -31,7 +31,7 @@ export default function ShadowDOM({ children }: { children: ReactNode }) {
     if (!ref.current) return;
     if (!ref.current.shadowRoot) return;
     const _portal = createPortal(children, ref.current.shadowRoot);
-    setPortal(_portal);
+    setPortal(_portal as ReactPortal);
   }, [children]);
 
   return (

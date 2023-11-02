@@ -1,5 +1,5 @@
 import { Component, FC, ReactNode, RefObject, createRef } from "react";
-import { MicroAppProps, loadScript } from "./utils";
+import { MicroAppProps, loadLegacyScript, loadScript } from "./utils";
 
 class _MicroComponent extends Component<MicroAppProps> {
   ref: RefObject<HTMLDivElement>;
@@ -18,9 +18,13 @@ class _MicroComponent extends Component<MicroAppProps> {
       appName,
       componentName,
       mainJsName = "main.js",
+      isLegacy = false,
       props,
     } = this.props;
-    const microApp = await loadScript({ url, appName, mainJsName });
+
+    const microApp = isLegacy
+      ? await loadLegacyScript({ url, appName })
+      : await loadScript({ url, appName, mainJsName });
     if (!microApp) return;
     const render = microApp.default[`${componentName}`];
     if (!render) return;
