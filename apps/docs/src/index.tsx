@@ -5,6 +5,7 @@ import ShadowDOM from "./components/ShadowDOM";
 import GlobalProvider from "./components/GlobalProvider";
 
 const App = lazy(() => import("./App"));
+const MailList = lazy(() => import("./components/MailList"));
 
 const render = (container: HTMLElement, component: ReactNode) => {
   const root = ReactDOM.createRoot(container);
@@ -23,5 +24,8 @@ const render = (container: HTMLElement, component: ReactNode) => {
 export default {
   App: (container: HTMLElement) => {
     render(container, <App />);
+  },
+  MailList: (container: HTMLElement) => {
+    render(container, <MailList />);
   },
 };

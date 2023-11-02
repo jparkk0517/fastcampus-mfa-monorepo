@@ -1,12 +1,16 @@
 import React from "react";
 import MailList from "./components/MailList";
+import ShoppingList from "./components/ShoppingList";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App(): JSX.Element {
   return (
-    <div className="App">
-      <div style={{ height: 100, width: 100 }}>docs app</div>
-      <MailList />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/mailList" Component={MailList}></Route>
+        <Route path="/shoppingList" Component={ShoppingList}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
