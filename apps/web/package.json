@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "react-scripts build",
-    "dev": "react-scripts start",
+    "build": "react-app-rewired build",
+    "dev": "react-app-rewired start",
     "docker:build": "yarn build && docker build -t web .",
-    "docker:run": "docker run -p 7002:7002 web"
+    "docker:run": "yarn docker:build && docker run -p 7002:7002 web"
   },
   "browserslist": {
     "production": [
@@ -27,8 +27,8 @@
     ]
   },
   "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-scripts": "5.0.0",
     "ui": "*",
     "web-vitals": "^2.1.2"
@@ -39,10 +39,12 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.0.3",
     "@types/node": "^18.17.2",
-    "@types/react": "^17.0.37",
-    "@types/react-dom": "^17.0.11",
+    "@types/react": "^18.0.37",
+    "@types/react-dom": "^18.0.11",
     "@types/testing-library__jest-dom": "^5.14.5",
     "eslint-config-custom": "*",
+    "react-app-rewired": "^2.2.1",
+    "to-string-loader": "^1.2.0",
     "tsconfig": "*",
     "typescript": "^4.5.4"
   }
