@@ -11,7 +11,7 @@ import { createPortal } from "react-dom";
 
 const shadowRootContext = createContext<ShadowRoot | null | undefined>(null);
 
-export const useShaDOM = () => {
+export const useShadowDOM = () => {
   const shadowRoot = useContext(shadowRootContext);
   return shadowRoot;
 };

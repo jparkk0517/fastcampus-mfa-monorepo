@@ -1,10 +1,73 @@
-import { useSelector } from "react-redux";
-import { emailSelector } from "../store/store";
-import { useShaDOM } from "./ShadowDOM";
+import { Button, Card, Modal, Row, Table } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { Email, deleteEmail, emailSelector } from "../store/store";
+import { useState } from "react";
+import { useShadowDOM } from "./ShadowDOM";
 
 export default function MailList() {
-  const shadowRoot = useShaDOM();
   const emails = useSelector(emailSelector);
-  console.log(emails);
-  return <></>;
+  const dispatch = useDispatch();
+  const [selectedEmail, setSelectedEmail] = useState<Email | undefined>();
+  const shadowRoot = useShadowDOM();
+  return (
+    <>
+      {selectedEmail !== undefined && (
+        <Modal
+          getContainer={() => shadowRoot as unknown as HTMLElement}
+          title="메일 상세"
+          open={selectedEmail !== undefined}
+          onCancel={() => setSelectedEmail(undefined)}
+        >
+          <Card>
+            <Row>보낸사람 : {selectedEmail.sender}</Row>
+            <Row>받은사람 : {selectedEmail.receiver}</Row>
+            <Row>내용 : {selectedEmail.content}</Row>
+          </Card>
+        </Modal>
+      )}
+      <Table
+        onRow={(mail) => ({
+          onClick() {
+            setSelectedEmail(mail);
+          },
+        })}
+        style={{
+          cursor: "pointer",
+        }}
+        rowKey={(data) => data.id}
+        columns={[
+          {
+            dataIndex: "sender",
+            title: "보낸사람",
+          },
+          {
+            dataIndex: "receiver",
+            title: "받은사람",
+          },
+          {
+            dataIndex: "content",
+            title: "내용",
+          },
+          {
+            dataIndex: "id",
+            title: "처리",
+            render(value: number) {
+              return (
+                <Button
+                  danger
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    dispatch(deleteEmail(value));
+                  }}
+                >
+                  삭제
+                </Button>
+              );
+            },
+          },
+        ]}
+        dataSource={emails}
+      />
+    </>
+  );
 }
