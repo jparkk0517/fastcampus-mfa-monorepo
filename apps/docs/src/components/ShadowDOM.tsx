@@ -1,5 +1,5 @@
-import {
-  FC,
+import React, {
+  ReactNode,
   ReactPortal,
   createContext,
   useContext,
@@ -16,7 +16,7 @@ export const useShaDOM = () => {
   return shadowRoot;
 };
 
-const ShadowDOM: FC = ({ children }) => {
+export default function ShadowDOM({ children }: { children: ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
   const [portal, setPortal] = useState<ReactPortal | null>(null);
 
@@ -39,6 +39,4 @@ const ShadowDOM: FC = ({ children }) => {
       <div ref={ref}>{portal}</div>
     </shadowRootContext.Provider>
   );
-};
-
-export default ShadowDOM;
+}
