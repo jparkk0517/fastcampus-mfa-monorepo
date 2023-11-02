@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "build": "react-scripts build",
-    "dev": "react-scripts start"
+    "dev": "react-scripts start",
+    "docker:build": "yarn build && docker build -t web .",
+    "docker:run": "docker run -p 7002:7002 web"
   },
   "browserslist": {
     "production": [
