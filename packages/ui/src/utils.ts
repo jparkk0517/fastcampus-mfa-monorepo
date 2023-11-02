@@ -6,7 +6,10 @@ export interface MicroAppProps {
 }
 
 export interface MicroApp {
-  default: Record<string, (container: HTMLElement) => void>;
+  default: Record<
+    string,
+    (container: HTMLElement, props?: Record<string, any>) => void
+  >;
 }
 
 export const loadScript = async ({
