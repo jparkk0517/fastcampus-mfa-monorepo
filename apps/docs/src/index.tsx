@@ -27,7 +27,7 @@ const render = (container: HTMLElement, component: ReactNode) => {
 export default {
   App: (container: HTMLElement, props?: Record<string, any>) => {
     const { basename = "" } = props ?? {};
-    return render(container, <App basename={basename} />);
+    return render(container, <App basename={basename as string} />);
   },
   MailList: (container: HTMLElement) => {
     return render(container, <MailList />);

@@ -130,14 +130,12 @@ Header
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
 }
 
 .header-box a {
   padding: 10px;
   color: white;
   height: 100%;
-  width: 100%;
   display: flex;
   align-items: center;
 }

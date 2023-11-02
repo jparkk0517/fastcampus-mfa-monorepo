@@ -4,9 +4,20 @@ import "./index.css";
 
 import App from "./App";
 import Sns from "./components/Sns";
+import ShadowDOM from "./components/ShadowDOM";
 
-const render = (container, component) => {
-  ReactDOM.render(<React.StrictMode>{component}</React.StrictMode>, container);
+const render = (container, component, cssPaths) => {
+  ReactDOM.render(
+    <React.StrictMode>
+      <ShadowDOM>
+        {cssPaths.map((cssPath) => (
+          <link href={cssPath} rel="stylesheet"></link>
+        ))}
+        {component}
+      </ShadowDOM>
+    </React.StrictMode>,
+    container
+  );
 
   return () => {
     unmountComponentAtNode(container);
@@ -17,11 +28,12 @@ if (!window["legacy"]) {
   window["legacy"] = {
     default: {
       App: (container, props) => {
-        const { basename = "" } = props ?? {};
-        return render(container, <App basename={basename} />);
+        const { basename = "", cssPaths = [] } = props ?? {};
+        return render(container, <App basename={basename} />, cssPaths);
       },
-      Sns: (container) => {
-        return render(container, <Sns />);
+      Sns: (container, props) => {
+        const { cssPaths = [] } = props ?? {};
+        return render(container, <Sns />, cssPaths);
       },
     },
   };

@@ -19,6 +19,10 @@ const items = [
     key: "web",
     label: <Link to="/web">web</Link>,
   },
+  {
+    key: "legacy",
+    label: <Link to="/legacy">legacy</Link>,
+  },
 ];
 
 export default function Header() {

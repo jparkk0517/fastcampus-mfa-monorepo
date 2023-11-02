@@ -19,7 +19,11 @@
   </body>
   <script>
     document.addEventListener("legacy-init", ({ detail }) => {
-      detail(document.querySelector("#root"));
+      detail(document.querySelector("#root"), {
+        cssPaths: Array.from(document.querySelectorAll("link")).map(
+          (link) => link.href
+        ),
+      });
     });
   </script>
 </html>

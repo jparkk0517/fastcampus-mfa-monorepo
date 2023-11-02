@@ -29,7 +29,10 @@ class _MicroComponent extends Component<MicroAppProps> {
     const render = microApp.default[`${componentName}`];
     if (!render) return;
     if (!this.ref.current) return;
-    this.umount = render(this.ref.current, props);
+    this.umount = render(this.ref.current, {
+      ...props,
+      cssPaths: microApp.cssPaths,
+    });
   }
   componentDidUpdate(): void {
     void this.init();

@@ -12,6 +12,7 @@ export interface MicroApp {
     string,
     (container: HTMLElement, props?: Record<string, any>) => () => void
   >;
+  cssPaths?: string[];
 }
 
 interface AssetManifest {
@@ -40,7 +41,7 @@ export const loadLegacyScript = async ({
 
   const microApp = window[`${appName}`];
   if (microApp) {
-    return Promise.resolve(microApp);
+    return Promise.resolve({ ...microApp, cssPaths });
   }
 
   return new Promise((resolve, reject) => {
@@ -50,7 +51,7 @@ export const loadLegacyScript = async ({
       script.onload = () => {
         const microApp = window[`${appName}`];
         if (microApp) {
-          resolve(microApp);
+          resolve({ ...microApp, cssPaths });
         } else {
           reject(new Error(`${appName} loading 오류`));
         }

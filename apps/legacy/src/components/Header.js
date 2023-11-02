@@ -3,6 +3,14 @@ import { Link } from "react-router-dom";
 
 const items = [
   {
+    key: "mailList",
+    label: <Link to="/mailList">mailList</Link>,
+  },
+  {
+    key: "shoppingList",
+    label: <Link to="/shoppingList">shoppingList</Link>,
+  },
+  {
     key: "sns",
     label: <Link to="/sns">sns</Link>,
   },
