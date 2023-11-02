@@ -1,3 +1,7 @@
+/* 
+Button
+*/
+
 button {
   padding: 10px 20px;
   margin: 10px;
@@ -18,4 +22,39 @@ button {
 }
 .button-cancel:hover {
   background-color: darkred;
+}
+
+/* 
+Table
+*/
+.table-container {
+  min-width: 100%;
+  overflow-y: scroll;
+}
+
+table {
+  min-width: 100%;
+}
+
+thead {
+  min-width: 100%;
+  background-color: gray;
+  color: white;
+  position: sticky;
+  top: 0;
+}
+
+thead tr th {
+  padding: 10px 2px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+tbody tr {
+  cursor: pointer;
+}
+
+tbody tr:hover {
+  background-color: gray;
+  color: white;
 }
