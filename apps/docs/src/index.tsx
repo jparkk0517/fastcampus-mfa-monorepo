@@ -1,6 +1,6 @@
 import React, { ReactNode, Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import indexStyle from "./index.css";
 import ShadowDOM from "./components/ShadowDOM";
 
 const App = lazy(() => import("./App"));
@@ -10,6 +10,7 @@ const render = (container: HTMLElement, component: ReactNode) => {
   root.render(
     <React.StrictMode>
       <ShadowDOM>
+        <style>{indexStyle}</style>
         <Suspense fallback="loading">{component}</Suspense>
       </ShadowDOM>
     </React.StrictMode>
