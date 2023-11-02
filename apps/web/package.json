@@ -31,7 +31,8 @@
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.0",
     "ui": "*",
-    "web-vitals": "^2.1.2"
+    "web-vitals": "^2.1.2",
+    "zustand": "^4.4.5"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.1",
